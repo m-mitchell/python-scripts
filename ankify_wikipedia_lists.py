@@ -71,7 +71,10 @@ for match in matches:
 		# Print out the name of the thing so the user can manually make a card if they want.
 		print("No image found for %s" % title)
 		continue
+
+	# Target basename
 	imageBasename = os.path.basename(image)
+	imageBasename = ''.join(c for c in imageBasename if (c.isalpha() or c.isdigit() or c in '-_.'))
 
 	# Grab the image we found and store it in the image directory.
 	urllib.request.urlretrieve(image, ANKI_IMG_DIR+imageBasename)
